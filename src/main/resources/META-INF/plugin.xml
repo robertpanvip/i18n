@@ -9,7 +9,8 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.robertpanvip.i18n.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <toolWindow factoryClass="com.github.robertpanvip.i18n.toolWindow.ConfigToolWindowFactory" id="i18n Config"/>
+        <projectService serviceImplementation="com.github.robertpanvip.i18n.toolWindow.PluginConfig"/>
     </extensions>
 
     <applicationListeners>

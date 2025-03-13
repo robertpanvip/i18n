@@ -21,8 +21,10 @@ kotlin {
 
 // Configure project's dependencies
 repositories {
-    mavenCentral()
-
+    //mavenCentral()
+    maven {
+        url = uri("https://maven.aliyun.com/repository/public")
+    }
     // IntelliJ Platform Gradle Plugin Repositories Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-repositories-extension.html
     intellijPlatform {
         defaultRepositories()
@@ -31,12 +33,14 @@ repositories {
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
+    implementation("org.graalvm.js:js:24.1.1") // GraalVM JavaScript 引擎
+    implementation("org.graalvm.js:js-scriptengine:24.1.1") // 兼容 ScriptEngine
     testImplementation(libs.junit)
 
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {
-        create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
-
+        //create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
+        local("E:\\Soft\\JetBrains\\WebStorm 2024.2.4")
         // Plugin Dependencies. Uses `platformBundledPlugins` property from the gradle.properties file for bundled IntelliJ Platform plugins.
         bundledPlugins(providers.gradleProperty("platformBundledPlugins").map { it.split(',') })
 
